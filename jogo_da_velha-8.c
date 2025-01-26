@@ -131,10 +131,13 @@ int jogada_estrategica_pc(int** m, int jogadorX) {
         if (m[0][i] == m[1][i] && m[2][i] == 0 && m[0][i] == jogadorX) return i + 7; 
         if (m[1][i] == m[2][i] && m[0][i] == 0 && m[1][i] == jogadorX) return i + 1;
         if (m[0][i] == m[2][i] && m[1][i] == 0 && m[0][i] == jogadorX) return i + 4;
-
-        if (i == 0 && m[0][0] == m[1][1] && m[2][2] == 0 && m[0][0] == jogadorX) return 9;
-        if (i == 1 && m[1][1] == m[2][2] && m[0][0] == 0 && m[1][1] == jogadorX) return 1;
-        if (i == 2 && m[0][2] == m[1][1] && m[2][0] == 0 && m[0][2] == jogadorX) return 3;
+        
+        if (m[0][0] == m[1][1] && m[2][2] == 0 && m[0][0] == jogadorX) return 9;
+        if (m[0][0] == jogadorX && m[2][2] == jogadorX && jogada_valida(m, 5)) return 5;
+        if (m[1][1] == m[2][2] && m[0][0] == 0 && m[1][1] == jogadorX) return 1;
+        if (m[2][0] == jogadorX && m[1][1] == jogadorX && m[0][2] == 0 && jogada_valida(m, 3)) return 3;
+        if(m[0][2] == jogadorX && m[1][1] == jogadorX && jogada_valida(m, 7)) return 7;
+    
     }
     return 0;
 }
