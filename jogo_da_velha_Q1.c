@@ -101,13 +101,15 @@ int estrategia_pc(int** m, int jogada) {
         // Verifica diagonais
         if (m[0][0] == m[1][1] && m[2][2] == 0 && m[0][0] == jogada)
             return 9;
-        if (m[0][0] == jogada && m[2][2] == jogada && jogada_valida(m, 5))
+        if (m[0][0] == m[2][2] && m[1][1] == 0 && m[0][0] == jogada)
+            return 5;
+        if (m[2][0] == m[0][2] && m[1][1] == 0 && m[2][0] == jogada)
             return 5;
         if (m[1][1] == m[2][2] && m[0][0] == 0 && m[1][1] == jogada)
             return 1;
-        if (m[2][0] == jogada && m[1][1] == jogada && m[0][2] == 0 && jogada_valida(m, 3))
+        if (m[2][0] == m[1][1] && m[0][2] == 0 && m[2][0] == jogada)
             return 3;
-        if(m[0][2] == jogada && m[1][1] == jogada && jogada_valida(m, 7))
+        if (m[0][2] == m[1][1] && m[2][0] == 0 && m[0][2] == jogada)
             return 7;
     }
     return 0; // Nenhuma jogada estratégica encontrada
